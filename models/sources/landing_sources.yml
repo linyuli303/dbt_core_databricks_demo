@@ -1,14 +1,31 @@
 sources: #https://docs.getdbt.com/reference/dbt-jinja-functions/source?version=2
   - name: landing 
     database: yuli_demo_dbt
-
+    schema: landing
     tables:
       - name: orders 
-        # config: 
-        #   loaded_at_field: "created_at"
-        #   freshness: #https://docs.getdbt.com/reference/resource-configs/freshness?version=2
-        #     warn_after: {count: 365, period: day}
-        #     error_after: {count: 1460, period: day}
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null:
+                  config:
+                    severity: warn               
+          - name: quantity
+            data_tests:
+              - assert_non_negative
+          - name: unit_price
+            data_tests:
+              - assert_non_negative
       - name: products
       - name: reviews
       - name: users
+
+        # data freshness check:
+        # config: 
+        #   loaded_at_field: "created_at"
+        #   freshness: #https://docs.getdbt.com/reference/resource-configs/freshness?version=2
+        #   warn_after: {count: 365, period: day}
+        #   error_after: {count: 1460, period: day}
