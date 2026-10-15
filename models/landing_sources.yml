@@ -1,0 +1,9 @@
+sources:
+  - name: landing 
+    database: yuli_demo_dbt
+
+    tables:
+      - name: orders 
+      - name: products
+      - name: reviews
+      - name: users
