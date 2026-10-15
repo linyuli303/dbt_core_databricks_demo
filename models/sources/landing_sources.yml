@@ -15,10 +15,14 @@ sources: #https://docs.getdbt.com/reference/dbt-jinja-functions/source?version=2
                     severity: warn               
           - name: quantity
             data_tests:
-              - assert_non_negative
+              - dbt_utils.expression_is_true:
+                  arguments:
+                    expression: ">=0"
           - name: unit_price
             data_tests:
-              - assert_non_negative
+              - dbt_utils.expression_is_true:
+                  arguments:
+                    expression: ">=0"
       - name: products
       - name: reviews
       - name: users
