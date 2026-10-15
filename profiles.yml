@@ -2,18 +2,18 @@ dbt_core_databricks_demo:
   outputs:
     dev:
       catalog: yuli_demo_dbt
-      host: dbc-9c38c4ba-be31.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/c60fbf9daf7d586b
+      host: dbc-xxxxxxxxx.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/xxxxxxxxx
       schema: default
       threads: 1
-      token: dapi11cfa133e3a8150c2537498ba0aaef7a
+      token: "{{env_var('DATABRICKS_TOKEN')}"
       type: databricks
     prod:
       catalog: yuli_demo_dbt_prod
-      host: dbc-9c38c4ba-be31.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/c60fbf9daf7d586b
+      host: dbc-xxxxxxxxx.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/xxxxxxxxx
       schema: default
       threads: 1
-      token: dapi11cfa133e3a8150c2537498ba0aaef7a
+      token: "{{env_var('DATABRICKS_TOKEN')}"
       type: databricks
   target: dev
