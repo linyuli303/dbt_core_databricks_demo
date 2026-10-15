@@ -1,6 +1,6 @@
 sources: #https://docs.getdbt.com/reference/dbt-jinja-functions/source?version=2
   - name: landing 
-    database: yuli_demo_dbt
+    database: "{{target.catalog}}"
     schema: landing
     tables:
       - name: orders 
